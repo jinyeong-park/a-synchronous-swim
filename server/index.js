@@ -11,7 +11,7 @@ keypressHandler.initialize(message => {
 //isValidMessage
 
 const httpHandler = require('./js/httpHandler');
-
+httpHandler.initialize(messageQueue);
 
 const http = require('http');
 const server = http.createServer(httpHandler.router);
