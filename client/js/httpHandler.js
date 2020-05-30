@@ -6,6 +6,30 @@
   // TODO: build the swim command fetcher here
   //
 
+  // Behavior = Every time period we send a request
+  // Request originates from the client and goes to the server
+  // Send a request to the server (command) and the server returns the event (swim direction)
+  setInterval(() => {
+    $.ajax({
+    type: 'GET',
+    url: serverUrl,
+    // data: data,
+    success: (data) => {
+      console.log('Server hit');
+      SwimTeam.move(data);
+    },
+    error: (err) => {
+      console.log('Error reaching server: ' + err);
+    }
+  })}, 1000);
+
+  //setInterval(function(){ alert("Hello"); }, 3000);
+
+  // $.get( "ajax/test.html", function( data ) {
+  //   $( ".result" ).html( data );
+  //   alert( "Load was performed." );
+  // });
+
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
   // Note: remember to fix the URL below.
@@ -17,7 +41,7 @@
     $.ajax({
       type: 'POST',
       data: formData,
-      url: 'FILL_ME_IN',
+      url: FILL_ME_IN,
       cache: false,
       contentType: false,
       processData: false,
